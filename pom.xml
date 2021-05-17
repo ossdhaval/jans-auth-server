@@ -82,13 +82,13 @@
 	<modules>
 		<module>model</module>
 		<module>persistence-model</module>
-		<module>client</module>
-		<module>static</module>
+		<!-- <module>client</module>
+		<module>static</module> -->
 		<module>rp</module>
 		<module>rp-demo</module>
 		<module>common</module>
-		<module>server</module>
-		<module>rp-spring-boot</module>
+		<!-- <module>server</module>
+		<module>rp-spring-boot</module> -->
   </modules>
 
 	<dependencyManagement>
@@ -715,6 +715,19 @@
 					<groupId>org.owasp</groupId>
 					<artifactId>dependency-check-maven</artifactId>
 					<version>5.2.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.7</version>
+					<executions>
+						<execution>
+							<id>prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
