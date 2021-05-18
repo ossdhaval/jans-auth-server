@@ -49,6 +49,8 @@
         <arquillian.drone.version>2.0.0.Final</arquillian.drone.version>
         <arquillian.graphene.version>2.1.0.CR1</arquillian.graphene.version>
 		<shrinkwrap.version>2.1.0</shrinkwrap.version>
+
+		<argLine>-Xms1024m -Xmx2048m -XX:+DisableExplicitGC</argLine>
 	</properties>
 
 	<prerequisites>
@@ -655,29 +657,6 @@
 					<version>2.1.1</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.19.1</version>
-					<configuration>
-						<argLine>-Xms1024m -Xmx2048m -XX:+DisableExplicitGC</argLine>
-
-						<!-- Needed as we have both junit and testng -->
-						<failIfNoTests>false</failIfNoTests>
-						<trimStackTrace>false</trimStackTrace>
-
-						<!-- exclude selenium tests -->
-						<excludes>
-							<exclude>**/selenium/*</exclude>
-							<exclude>**/webdriver/*</exclude>
-							<exclude>**/xml/*</exclude>
-						</excludes>
-
-						<suiteXmlFiles>
-							<suiteXmlFile>target/test-classes/testng.xml</suiteXmlFile>
-						</suiteXmlFiles>
-					</configuration>
-				</plugin>
-				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>findbugs-maven-plugin</artifactId>
 					<version>3.0.4</version>
@@ -717,21 +696,30 @@
 					<artifactId>dependency-check-maven</artifactId>
 					<version>5.2.2</version>
 				</plugin>
-				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.8.7</version>
-					<executions>
-						<execution>
-							<id>prepare-agent</id>
-							<goals>
-								<goal>prepare-agent</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+
 			</plugins>
 		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<reporting>
