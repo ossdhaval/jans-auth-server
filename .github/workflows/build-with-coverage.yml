@@ -19,7 +19,7 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Build with Maven
-      run: mvn -X clean test install jacoco:report
+      run: mvn clean jacoco:prepare-agent test install jacoco:report
 
       # Runs a set of commands using the runners shell
       
