@@ -29,7 +29,7 @@
 
 		<log4j.version>2.13.3</log4j.version>
 		<slf4j.version>1.7.25</slf4j.version>
-
+ 
 		<weld.version>3.1.2.Final</weld.version>
 
 		<jsf-api.version>2.2.16</jsf-api.version>
@@ -696,7 +696,6 @@
 					<artifactId>dependency-check-maven</artifactId>
 					<version>5.2.2</version>
 				</plugin>
-
 			</plugins>
 		</pluginManagement>
 
