@@ -51,6 +51,12 @@
 		<shrinkwrap.version>2.1.0</shrinkwrap.version>
 
 		<argLine>-Xms1024m -Xmx2048m -XX:+DisableExplicitGC</argLine>
+
+		<sonar.projectKey>ossdhaval_jans-auth-server</sonar.projectKey>
+		<sonar.organization>ossdhaval</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+
 	</properties>
 
 	<prerequisites>
