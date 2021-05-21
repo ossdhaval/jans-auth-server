@@ -17,6 +17,10 @@
 		<maven>${maven.min-version}</maven>
 	</prerequisites>
 
+	<properties>
+
+	</properties>
+
 	<build>
 		<finalName>jans-auth-model</finalName>
 
