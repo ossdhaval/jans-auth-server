@@ -71,4 +71,12 @@ public class SimpleUser extends io.jans.orm.model.base.SimpleUser {
         }
     }
 
+    public void emptyMethod(){
+
+    }
+
+    public static void reassign(String name){
+        name = "some name";
+    }
+
 }
