@@ -45,4 +45,29 @@ public class SimpleUser extends io.jans.orm.model.base.SimpleUser {
         }
     }
 
+    public Object setAttribute(String attributeName, boolean optional, boolean multivalued) throws InvalidClaimException {
+        Object attribute = null;
+
+        List<String> values = getAttributeValues(attributeName);
+
+            if (multivalued) {
+                JSONArray array = new JSONArray();
+                for (String v : values) {
+                    array.put(v);
+                }
+                attribute = array;
+            } else {
+                attribute = values.get(0);
+            }
+
+
+        if (attribute != null) {
+            return attribute;
+        } else if (optional) {
+            return attribute;
+        } else {
+            throw new InvalidClaimException("The claim " + attributeName + " was not found.");
+        }
+    }
+
 }
