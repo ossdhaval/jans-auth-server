@@ -50,6 +50,7 @@ public class SimpleUser extends io.jans.orm.model.base.SimpleUser {
 
         List<String> values = getAttributeValues(attributeName);
 
+        if(values == null) {
             if (multivalued) {
                 JSONArray array = new JSONArray();
                 for (String v : values) {
@@ -59,7 +60,7 @@ public class SimpleUser extends io.jans.orm.model.base.SimpleUser {
             } else {
                 attribute = values.get(0);
             }
-
+        }
 
         if (attribute != null) {
             return attribute;
