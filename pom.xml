@@ -91,14 +91,13 @@
 	<modules>
 		<module>model</module>
 		<module>persistence-model</module>
-<!--		<module>client</module>-->
-<!--		<module>static</module>-->
+		<module>client</module>
+		<module>static</module>
 		<module>rp</module>
 		<module>rp-demo</module>
 		<module>common</module>
-<!--		<module>server</module>-->
-<!--		<module>rp-spring-boot</module>-->
-<!--		<module>jacoco-report</module> &lt;!&ndash; this module should always be at the end of all other modules &ndash;&gt;-->
+		<module>server</module>
+		<module>rp-spring-boot</module>
 	</modules>
 
 	<dependencyManagement>
