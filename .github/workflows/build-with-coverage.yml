@@ -41,7 +41,7 @@ jobs:
           esac
           
     - name: check for JVM project
-      if: contains(env.JVM_PROJECTS, 'jans-auth-server')
+      if: contains(env.JVM_PROJECTS, format('|{0}|',$GITHUB_REF)
       run: |
           echo "Yes, this is java project"
           
