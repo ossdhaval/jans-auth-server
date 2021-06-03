@@ -12,7 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      JVM_PROJECTS: jans-auth-server|jans-scim|jans-core
+      JVM_PROJECTS: <ossdhaval/jans-auth-server><jans-scim><jans-core>
       project: $GITHUB_REPOSITORY
 
     steps:
@@ -42,7 +42,7 @@ jobs:
           esac
           
     - name: check for JVM project
-      if: contains(env.JVM_PROJECTS, format('|{0}|',env.project))
+      if: contains(env.JVM_PROJECTS, format('<{0}>',env.project))
       run: |
           echo "Yes, this is java project"
           
