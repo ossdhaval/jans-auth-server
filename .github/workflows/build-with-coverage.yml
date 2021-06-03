@@ -12,7 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      JVM_PROJECTS: <ossdhaval/jans-auth-server><jans-scim><jans-core>
+      JVM_PROJECTS: <ossdhaval/jans-auth-server-1><jans-scim><jans-core>
 
     steps:
     - uses: actions/checkout@v2
