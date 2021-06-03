@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JVM_PROJECTS: jans-auth-server|jans-scim|jans-core
+      project: $GITHUB_REF
 
     steps:
     - uses: actions/checkout@v2
@@ -41,7 +42,7 @@ jobs:
           esac
           
     - name: check for JVM project
-      if: contains(env.JVM_PROJECTS, format('|{0}|',${{GITHUB_REF}})
+      if: contains(env.JVM_PROJECTS, format('|{0}|',env.project)
       run: |
           echo "Yes, this is java project"
           
