@@ -42,7 +42,7 @@ jobs:
           esac
           
     - name: check for JVM project
-      if: contains(env.JVM_PROJECTS, format('<{0}>',env.project))
+      if: contains(env.JVM_PROJECTS, '<ossdhaval/jans-auth-server>')
       run: |
           echo "Yes, this is java project"
           
