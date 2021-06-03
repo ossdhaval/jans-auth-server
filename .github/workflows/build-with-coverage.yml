@@ -28,11 +28,14 @@ jobs:
       
     - name: Run a multi-line script
       run: |
-          echo setup token
-          export CODACY_PROJECT_TOKEN=7b4d14b81674406fae7b58fcc49e8685
-          echo run upload command
-          bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Java $(find **/jacoco*.xml -printf '-r %p ')
-          echo report command execution complete
+          echo "check branch and print : $GITHUB_REF"
+          case "$GITHUB_REF" in
+            "pull-request-decoration") echo "not master"
+            ;;
+            "master") echo "master"
+            ;;
+            *) echo "something else"
+            ;;
 
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
