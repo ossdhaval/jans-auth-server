@@ -12,8 +12,8 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      JVM_PROJECTS: <ossdhaval/jans-auth-server><jans-scim><jans-core>
-      PROJECT: format('<{0}>',${{github.repository}})
+      JVM_PROJECTS: ossdhaval/jans-auth-server|jans-scim|jans-core
+#       PROJECT: format('<{0}>',${{github.repository}})
 
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
       
     - name: Run a multi-line script
       run: |
-          echo "check branch and printed : env.PROJECT"
+          echo "check branch and printed : ${{github.repository}}"
           case "$GITHUB_REF" in
             "refs/heads/pull-request-decoration") echo "not master"
             ;;
@@ -42,9 +42,9 @@ jobs:
           esac
           
     - name: check for JVM project
-      if: contains(env.JVM_PROJECTS, env.PROJECT)
+      if: contains(env.JVM_PROJECTS, ${{github.repository}})
       run: |
-          echo "Yes, this is java project: env.PROJECT"
+          echo "Yes, this is java project: ${{github.repository}}"
           
 
 #     - name: Cache SonarCloud packages
