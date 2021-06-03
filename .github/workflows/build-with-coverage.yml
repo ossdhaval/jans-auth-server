@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JVM_PROJECTS: jans-auth-server|jans-scim|jans-core
-      project: $github.repository
+      project: $GITHUB_REPOSITORY
 
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
       
     - name: Run a multi-line script
       run: |
-          echo "check branch and printed : $github.repository"
+          echo "check branch and printed : $GITHUB_REPOSITORY"
           case "$GITHUB_REF" in
             "refs/heads/pull-request-decoration") echo "not master"
             ;;
