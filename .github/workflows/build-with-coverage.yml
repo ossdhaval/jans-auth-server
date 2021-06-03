@@ -30,7 +30,7 @@ jobs:
       
     - name: Run a multi-line script
       run: |
-          echo "check branch and print : $GITHUB_REF"
+          echo "check branch and printed : $GITHUB_REF"
           case "$GITHUB_REF" in
             "refs/heads/pull-request-decoration") echo "not master"
             ;;
