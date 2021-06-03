@@ -44,7 +44,7 @@ jobs:
     - name: check for JVM project
       if: contains(env.JVM_PROJECTS, '<ossdhaval/jans-auth-server>')
       run: |
-          echo "Yes, this is java project"
+          echo "Yes, this is java project: $env.project"
           
 
 #     - name: Cache SonarCloud packages
