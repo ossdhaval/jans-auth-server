@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JVM_PROJECTS: <ossdhaval/jans-auth-server><jans-scim><jans-core>
-      project: $GITHUB_REPOSITORY
 
     steps:
     - uses: actions/checkout@v2
@@ -44,7 +43,7 @@ jobs:
     - name: check for JVM project
       if: contains(env.JVM_PROJECTS, '<ossdhaval/jans-auth-server>')
       run: |
-          echo "Yes, this is java project: $env.project"
+          echo "Yes, this is java project: $GITHUB_REPOSITORY"
           
 
 #     - name: Cache SonarCloud packages
