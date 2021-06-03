@@ -30,9 +30,9 @@ jobs:
       run: |
           echo "check branch and print : $GITHUB_REF"
           case "$GITHUB_REF" in
-            "pull-request-decoration") echo "not master"
+            "refs/heads/pull-request-decoration") echo "not master"
             ;;
-            "master") echo "master"
+            "refs/heads/master") echo "master"
             ;;
             *) echo "something else"
             ;;
