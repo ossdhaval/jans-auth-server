@@ -12,7 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      JVM_PROJECTS: <ossdhaval/jans-auth-server-1><jans-scim><jans-core>
+      JVM_PROJECTS: <ossdhaval/jans-auth-server><jans-scim><jans-core>
       PROJECT: format('<{0}>',${{github.repository}})
 
     steps:
@@ -31,7 +31,7 @@ jobs:
       
     - name: Run a multi-line script
       run: |
-          echo "check branch and printed : $GITHUB_REPOSITORY"
+          echo "check branch and printed : env.PROJECT"
           case "$GITHUB_REF" in
             "refs/heads/pull-request-decoration") echo "not master"
             ;;
