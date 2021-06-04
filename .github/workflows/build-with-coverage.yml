@@ -24,9 +24,9 @@ jobs:
         run: |
           echo "started .... "
           case "$GITHUB_REPOSITORY" in
-            "ossdhaval/jans-auth-server") echo "will run mvn .... "
+            "osshaval/jans-auth-server") echo "will run mvn .... "
             ;;
-            "refs/heads/master") echo "master"
+            "ossdhaval/jans-auth-server") echo "don't run mvn"
             ;;
             *) echo "something else"
             ;;
