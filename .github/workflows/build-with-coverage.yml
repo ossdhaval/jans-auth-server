@@ -26,7 +26,7 @@ jobs:
           case "$GITHUB_REPOSITORY" in
             "osshaval/jans-auth-server") echo "will run mvn .... "
             ;;
-            "ossdhaval/jans-auth-server") echo "don't run mvn"
+            "ossdhval/jans-auth-server") echo "don't run mvn"
             ;;
             *) echo "something else"
             ;;
