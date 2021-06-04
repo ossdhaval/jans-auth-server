@@ -42,7 +42,7 @@ jobs:
           esac
           
     - name: check for JVM project
-      if: contains(${{env.JVM_PROJECTS}}, ${{github.repository}})
+      if: contains(env.JVM_PROJECTS, github.repository)
       run: |
           echo "Yes, this is java project: ${{github.repository}} of ${{env.JVM_PROJECTS}}"
           
