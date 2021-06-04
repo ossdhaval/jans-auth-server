@@ -20,46 +20,59 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of sonarqube analysis
           
-      - name: Set up JDK 11
-        if: contains(env.JVM_PROJECTS, github.repository)
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
+      - name: compare the repo
+        run: |
+          echo "started .... "
+          case "$GITHUB_REPOSITORY" in
+            "ossdhaval/jans-auth-server") echo "will run mvn .... "
+            ;;
+            "refs/heads/master") echo "master"
+            ;;
+            *) echo "something else"
+            ;;
+          esac
           
-      - name: Build with Maven
-        if: contains(env.JVM_PROJECTS, github.repository)
-        run: mvn clean -fae -X -pl \!client,\!static,\!server,\!rp-spring-boot jacoco:prepare-agent test install jacoco:report
+          
+#       - name: Set up JDK 11
+#         if: contains(env.JVM_PROJECTS, github.repository)
+#         uses: actions/setup-java@v2
+#         with:
+#           java-version: '11'
+#           distribution: 'adopt'
+          
+#       - name: Build with Maven
+#         if: contains(env.JVM_PROJECTS, github.repository)
+#         run: mvn clean -fae -X -pl \!client,\!static,\!server,\!rp-spring-boot jacoco:prepare-agent test install jacoco:report
 
-        # Runs a set of commands using the runners shell
+#         # Runs a set of commands using the runners shell
 
-      - name: Cache SonarCloud packages
-        if: contains(env.JVM_PROJECTS, github.repository)
-        uses: actions/cache@v1
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
+#       - name: Cache SonarCloud packages
+#         if: contains(env.JVM_PROJECTS, github.repository)
+#         uses: actions/cache@v1
+#         with:
+#           path: ~/.sonar/cache
+#           key: ${{ runner.os }}-sonar
+#           restore-keys: ${{ runner.os }}-sonar
           
-      - name: Cache Maven packages
-        if: contains(env.JVM_PROJECTS, github.repository)
-        uses: actions/cache@v1
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+#       - name: Cache Maven packages
+#         if: contains(env.JVM_PROJECTS, github.repository)
+#         uses: actions/cache@v1
+#         with:
+#           path: ~/.m2
+#           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+#           restore-keys: ${{ runner.os }}-m2
           
-      - name: Build and analyze
-        if: contains(env.JVM_PROJECTS, github.repository)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B -pl \!client,\!static,\!server,\!rp-spring-boot verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+#       - name: Build and analyze
+#         if: contains(env.JVM_PROJECTS, github.repository)
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#         run: mvn -B -pl \!client,\!static,\!server,\!rp-spring-boot verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       
-      - name: SonarCloud Scan
-        if: contains(env.NON_JVM_PROJECTS, github.repository)
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#       - name: SonarCloud Scan
+#         if: contains(env.NON_JVM_PROJECTS, github.repository)
+#         uses: SonarSource/sonarcloud-github-action@master
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
