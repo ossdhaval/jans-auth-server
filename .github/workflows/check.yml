@@ -1,4 +1,4 @@
-name: build with coverage
+name: temp tests
 
 on:
   push:
