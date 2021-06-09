@@ -26,7 +26,7 @@ jobs:
           echo "action_state=yellow" >> $GITHUB_ENV
           
       - name: check yellow
-        if: (env.action_state == "yellow")
+        if: contains(env.action_state,"yellow")
         run: echo "----------------> we are here"
 
 
