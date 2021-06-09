@@ -1,0 +1,32 @@
+name: build with coverage
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      JVM_PROJECTS: JanssenProject/jans-auth-server|JanssenProject/jans-orm|JanssenProject/jans-config-api|JanssenProject/jans-client-api|JanssenProject/jans-scim|JanssenProject/jans-core|JanssenProject/jans-notify|JanssenProject/jans-fido2|JanssenProject/jans-eleven
+      NON_JVM_PROJECTS: ossdhaval/jans-auth-server|JanssenProject/jans-setup|JanssenProject/jans-cli|JanssenProject/docker-jans-persistence-loader|JanssenProject/docker-jans-client-api|JanssenProject/jans-pycloudlib|JanssenProject/docker-jans-auth-server|JanssenProject/docker-jans-fido2|JanssenProject/docker-jans-scim|JanssenProject/docker-jans-config-api|JanssenProject/docker-jans-certmanager|JanssenProject/docker-jans-configuration-manager|JanssenProject/jans-cloud-native
+    
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of sonarqube analysis
+          
+
+      - name: set var
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+          
+      - name: check yellow
+        if: (env.action_state == "yellow")
+        run: echo "----------------> we are here"
+
+
