@@ -22,8 +22,11 @@ jobs:
           
 
       - name: set var
+        env:
+          REPO_OWNER: ${{ github.repository_owner }}
         run: |
           echo "action_state=yellow" >> $GITHUB_ENV
+          echo "------> print owner: ${REPO_OWNER}"
           
       - name: check yellow
         if: contains(env.action_state,'yellow')
