@@ -93,7 +93,6 @@ jobs:
             "ossdhaval/jans-auth-server") 
               echo "Run Sonar analysis for jans-auth-server "
               mvn -B -pl \!client,\!static,\!server,\!rp-spring-boot org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-              mvn -B -pl \!client,\!static,\!server org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
             ;;
             "JanssenProject/jans-client-api") 
               echo "Run Sonar analysis for jans-client-api"
